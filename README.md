@@ -4,6 +4,23 @@ Quarto rebuild of lucasnell.com -- **this is the live site** as of
 2026-09-14. Replaces the old Hugo site (`nell_website`), which is kept
 read-only as a fallback at https://nell-website.netlify.app.
 
+## Updating the site
+
+Edit, commit, push to `main` -- Netlify auto-builds and auto-deploys.
+
+**Exception:** `publications.qmd` and the static R chunks in
+`resources/functionalr/index.qmd` rely on the committed `_freeze/` cache,
+and Netlify has no R installed, only the Quarto CLI. If your change affects
+either page's R output (a new paper, an edited `publication-extras.yml`,
+etc.), run `quarto render` locally first to refresh `_freeze/`, and commit
+that alongside your content change -- otherwise Netlify's build will try to
+re-execute R and fail.
+
+Either way, `quarto preview` locally before pushing catches most problems
+early. A failed Netlify build doesn't take the live site down (it keeps
+serving the last successful deploy), but your change won't go live until
+it's fixed.
+
 ## Setup
 
 Two things are missing and have to be copied in by hand:
@@ -70,6 +87,5 @@ seven years newer.
 
 Full project context (architecture, gotchas, decisions, audit of the old
 site, visual direction) lives in `CLAUDE.md` and `docs/`, kept outside this
-repo in `~/Library/CloudStorage/Box-Box/claude/website`.
-
-- [ ] Hero treatment for the homepage — currently just a plain portrait + bio
+repo in `~/Library/CloudStorage/Box-Box/claude/website` -- that's the
+up-to-date source for what's left, not this section.
