@@ -1,12 +1,21 @@
 # Pins the build so local and production never drift apart.
 # Bump QUARTO_VERSION deliberately, and check a deploy preview before merging.
+#
+# QUARTO_VERSION alone does NOT get quarto onto the build image's PATH --
+# confirmed by an actual failed build (`quarto: command not found`, exit
+# 127) before this plugin was added. The official Quarto Netlify plugin
+# installs the pinned version and runs the render itself; don't also set
+# `[build] command = "quarto render"`, or it'll run before the plugin has
+# installed quarto (or double-render).
 
 [build]
-  command = "quarto render"
   publish = "_site"
 
 [build.environment]
   QUARTO_VERSION = "1.10.18"
+
+[[plugins]]
+  package = "@quarto/netlify-plugin-quarto"
 
 [[headers]]
   for = "/*"
