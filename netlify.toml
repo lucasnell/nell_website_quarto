@@ -1,0 +1,46 @@
+# Pins the build so local and production never drift apart.
+# Bump QUARTO_VERSION deliberately, and check a deploy preview before merging.
+
+[build]
+  command = "quarto render"
+  publish = "_site"
+
+[build.environment]
+  QUARTO_VERSION = "1.10.18"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The old Hugo site's top-level pages all had trailing slashes
+# (/research/, /publications/, /resources/, /cv/); Quarto renders these as
+# flat .html files, so rewrite the old paths to keep existing links working.
+# The three resources/ sub-pages don't need this: they're each an index.qmd
+# inside its own directory, so they already resolve at a trailing slash.
+[[redirects]]
+  from = "/research/"
+  to = "/research.html"
+  status = 200
+
+[[redirects]]
+  from = "/publications/"
+  to = "/publications.html"
+  status = 200
+
+[[redirects]]
+  from = "/resources/"
+  to = "/resources.html"
+  status = 200
+
+[[redirects]]
+  from = "/cv/"
+  to = "/cv.html"
+  status = 200

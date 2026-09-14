@@ -1,0 +1,25 @@
+---
+title: "Publications"
+---
+
+```{r}
+#| include: false
+source("R/publications.R")
+```
+
+::: {.publications-list}
+
+::: {.pub-legend}
+<img src="img/closed.svg" alt=""> institutional access &nbsp;
+<img src="img/open.svg" alt=""> open access &nbsp;
+<img src="img/pdf.svg" alt=""> PDF &nbsp;
+\* mentored undergraduate author
+:::
+
+```{r}
+#| echo: false
+#| output: asis
+render_publications()
+```
+
+:::

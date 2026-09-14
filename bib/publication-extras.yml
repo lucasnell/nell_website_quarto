@@ -1,0 +1,88 @@
+# Website-only additions to the bibliographic record, keyed by citation key.
+# Zotero stays the source of truth for authors, journal, volume, pages, DOI.
+# This file holds what Zotero doesn't carry.
+#
+#   access:   open | closed        which icon links the DOI
+#   pdf:      url                  adds a PDF icon
+#   mentees:  [Name X, Name Y]     appends * to those authors
+#   title:    string               overrides the bib title (casing, markup)
+#   override: {...}                corrects a wrong or missing bib field
+#
+# Every key below is optional. A paper needing none can be left out entirely.
+#
+# The `title:` overrides exist because Better BibTeX is exporting Title Case.
+# If you switch that export to sentence case in Zotero, delete them all.
+
+Chappell2025:
+  title: "Transcriptional responses to priority effects in nectar yeast"
+
+Nell2024:
+  title: "Shared features underlying compact genomes and extreme habitat use in chironomid midges"
+  access: open
+
+Nell2024a:
+  title: "Dispersal stabilizes coupled ecological and evolutionary dynamics in a host-parasitoid system"
+  pdf: "https://www.science.org/stoken/author-tokens/ST-1758/full"
+  mentees: ["Sinclair C", "Bhat K", "Ernst N", "Boulaleh H"]
+
+Botsch2024:
+  title: "Disentangling the drivers of decadal body size decline in an insect population"
+  access: open
+
+Northfield2021:
+  title: "Coevolution, diversification, and alternative states in two-trophic communities"
+  access: closed
+  pdf: "http://tinyurl.com/yc7j73m3"
+
+McCary2021:
+  title: "Transient top-down and bottom-up effects of resources pulsed to multiple trophic levels"
+  access: closed
+  pdf: "http://tinyurl.com/yc43vhab"
+
+Li2020:
+  title: "`phyr`: an R package for phylogenetic species-distribution modelling in ecological communities"
+  access: closed
+  pdf: "https://www.biorxiv.org/content/10.1101/2020.02.17.952317v1"
+
+Nell2020a:
+  title: "`jackalope`: a swift, versatile phylogenomic and high-throughput sequencing simulator"
+  access: closed
+  pdf: "https://bit.ly/3hBiYJo"
+
+Brun2019:
+  title: "Morphological bases for intestinal paracellular absorption in bats and rodents"
+  access: closed
+  pdf: "https://bit.ly/3hGqtz3"
+  override:
+    issue: 9
+
+Greenbarg2017:
+  title: "Pilot study: use of contrast-enhanced ultrasonography in feline renal transplant recipients"
+  access: closed
+  pdf: "https://goo.gl/EZZyQM"
+  # The bib entry is incomplete: no volume, pages or DOI, and it is filed
+  # under the 2017 online-first date rather than the 2018 issue.
+  # Better to fix this in Zotero and delete this block.
+  override:
+    year: 2018
+    volume: 20
+    issue: 4
+    page: "393-398"
+    doi: "10.1177/1098612x17713855"
+
+Nell2016:
+  title: "Presence of breeding birds improves body condition for a crocodilian nest protector"
+  access: open
+  override:
+    doi: "10.1371/journal.pone.0149572"
+
+Nell2015:
+  title: "Fallen nestlings and regurgitant as mechanisms of nutrient transfer from nesting wading birds to crocodilians"
+  access: closed
+  pdf: "https://goo.gl/3W3QU6"
+  override:
+    doi: "10.1007/s13157-015-0664-0"
+
+Barclay2012:
+  title: "The evolutionary consequences of blood-stage vaccination on the rodent malaria *Plasmodium chabaudi*"
+  access: open

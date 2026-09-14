@@ -1,0 +1,71 @@
+---
+title: "Mutualism in the Everglades"
+date: 2017-05-09
+author: "Lucas A. Nell"
+---
+
+## Facilitation between nesting wading birds and alligators
+
+Facilitation (a positive between-species exchange mediated through habitat
+improvement) is widespread and being increasingly recognized for its
+importance in structuring communities and shaping species' distributions.
+For my thesis research, I assessed how a keystone species is affected by
+associating with a group of organisms it often consumes—yet also protects.
+
+Wading birds (herons, egrets, storks, ibises, spoonbills) nest near
+alligators in the Everglades, probably because alligator presence deters
+devastating nest predators such as raccoons and opossums. My research at the
+University of Florida examined the other side of this relationship and
+assessed what benefits, if any, alligators might derive from associating with
+wading birds. The illustration below shows the four ways we believe
+alligators might benefit (from left to right):
+
+1. Juvenile birds foraging near colonies
+2. Increased aquatic prey abundance (e.g., sirens, crayfish, fishes) driven by nutrients
+   from bird guano
+3. Chicks and other material falling from nests directly to alligators
+4. Nest predators drawn to colonies
+
+![*Above:* Hypothesized benefits to alligators from wading bird nesting colonies](/img/illustration.png)
+
+We first estimated the amount of food via pathway #3 by examining 14 years of
+wading bird nest-success data and by catching fallen regurgitated fish. We
+found that regurgitant appears to be of minor importance to alligators, but
+fallen nestlings could be a significant source of food<sup>1</sup>. In
+prolific years, nestling carcasses alone could sustain most of the breeding
+female alligators in our study population for much of the dry season.
+Although we knew that alligators often can be observed near and within
+colonies (see [this video](https://youtu.be/34cmq9la-Jw) and Fig S1 from
+[here](https://goo.gl/Wb3vP7)), we hadn't yet demonstrated how this
+potentially substantive food source might affect alligators in the field.
+
+![*Above:* Alligator tracks directly underneath one of our throughfall traps](/img/tracks_under_trap.jpg)
+
+So to the field we went. We captured alligators in similar habitat with and
+without nesting colonies, and measured body condition via a morphometric
+index (i.e., a measure of mass in relation to length). We found
+significantly higher condition in colony alligators, even when controlling
+statistically for a range of environmental factors<sup>2</sup>. Given the
+magnitude of the difference we detected, there are likely population-level
+effects of wading bird nesting colonies on alligators. We also believe that
+associations between nesting birds and crocodilians could be widespread and
+ecologically important for many tropical and subtropical wetlands.
+
+![*Above:* My first captured alligator, a skinny 10.5 ft male](/img/first_gator.jpg)
+
+### Publications:
+
+1. **Nell LA**, Frederick PC. 2015. Fallen nestlings and regurgitant as mechanisms of
+   nutrient transfer from nesting wading birds to crocodilians. *Wetlands* 35:723--732.
+   [[link](http://dx.doi.org/10.1007/s13157-015-0664-0)] [[pdf](
+   https://goo.gl/3W3QU6)]
+2. **Nell LA**, Frederick PC, Mazzotti FJ, Vliet KA, Brandt LA. 2016. Presence of breeding
+   birds improves body condition for a crocodilian nest protector. *PLOS ONE* 11:e0149572.
+   [[link](http://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0149572)]
+
+### Popular press:
+
+1. **Nell, LA**. Jun 2016. Nesting with alligators. *Natural History*, 12–15.
+   [[pdf](/pdf/Nell_NH.pdf)]
+2. **Nell, LA**. May 2016. Unlikely companions. *Biosphere*, 56–61.
+   [[pdf](/pdf/Nell_Biosphere.pdf)]

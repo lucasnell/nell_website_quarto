@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "**/*.qmd"
+
+# Cached chunk output is committed to _freeze/, so Netlify needs only the
+# Quarto CLI to build -- no R, no package library, no dependency drift.
+execute:
+  freeze: auto
+
+website:
+  title: "Lucas A. Nell"
+  site-url: https://www.lucasnell.com
+  description: "Ecology and evolutionary biology: eco-evolutionary dynamics, genome evolution, and computational tools."
+  favicon: img/favicon.png
+  navbar:
+    left:
+      - href: research.qmd
+        text: Research
+      - href: publications.qmd
+        text: Publications
+      - href: resources.qmd
+        text: Resources
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/lucasnell
+        aria-label: GitHub
+  page-footer:
+    left: "© Lucas A. Nell"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: [default, theme/nell.scss]
+    toc: false
+    anchor-sections: true
+    link-external-newwindow: true

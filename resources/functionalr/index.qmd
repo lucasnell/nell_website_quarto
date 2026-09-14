@@ -1,0 +1,356 @@
+---
+title: "Functional programming in R"
+date: 2018-10-07
+author: "Lucas A. Nell"
+toc: true
+filters:
+  - webr
+---
+
+This document is based on a presentation I did for the grad student
+organization for the Department of Integrative Biology, UW--Madison in Fall
+2018. I've made a few changes to hopefully make it more transparent as a
+stand-alone document.
+
+A few of the code blocks below (marked with a **Run Code** button) are live —
+edit them and rerun to see what happens, no R installation required.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+
+## Why use functions?
+
+Two main advantages over copy and paste:
+
+1. Create fewer errors
+2. Improve readability of code
+
+## Consider the following example
+
+Small errors are easy to make and can be annoying to find.
+
+```{r show_errors, error=TRUE}
+lm_mpg <- lm(mpg ~ factor(cyll), mtcars)
+```
+```{r show_errors2, error=TRUE}
+lm_hp <- lm(hp ~ factor(cyl), mrcars)
+```
+```{r show_errors3, error=TRUE}
+lm_disp <- lm(mpg ~ factor(cyl), mtcars)
+```
+
+The problem is even worse when you have lots of copying.
+
+```{r show_many_models, eval=FALSE}
+lm(mpg ~ cyl + disp + hp + drat, mtcars)
+lm(mpg ~ cyl + disp + hp + wt, mtcars)
+lm(mpg ~ cyl + disp + drat + wt, mtcars)
+lm(mpg ~ cyl + hp + drat + wt, mtcars)
+lm(mpg ~ disp + hp + drat + wt, mtcars)
+lm(disp ~ mpg + cyl + hp + drat, mtcars)
+lm(disp ~ mpg + cyl + hp + wt, mtcars)
+lm(disp ~ mpg + cyl + drat + wt, mtcars)
+lm(disp ~ mpg + hp + drat + wt, mtcars)
+lm(disp ~ cyl + hp + drat + wt, mtcars)
+lm(hp ~ mpg + cyl + disp + drat, mtcars)
+lm(hp ~ mpg + cyl + disp + wt, mtcars)
+lm(hp ~ mpg + cyl + drat + wt, mtcars)
+lm(hp ~ mpg + disp + drat + wt, mtcars)
+lm(hp ~ cyl + disp + drat + wt, mtcars)
+```
+
+```{r fixed_errors_fxn, echo=FALSE}
+cyl_model <- function(y) {
+  form <- as.formula(paste(y, "~ factor(cyl)"))
+  mod <- lm(form, mtcars)
+  mod$call$formula <- as.formula(mod$terms)
+  return(mod)
+}
+```
+
+### Which is better?
+
+```{r non_fixed_errors, eval = FALSE}
+lm_mpg <- lm(mpg ~ factor(cyl), mtcars)
+lm_disp <- lm(disp ~ factor(cyl), mtcars)
+lm_hp <- lm(hp ~ factor(cyl), mtcars)
+lm_drat <- lm(drat ~ factor(cyl), mtcars)
+lm_wt <- lm(wt ~ factor(cyl), mtcars)
+lm_qsec <- lm(qsec ~ factor(cyl), mtcars)
+lm_vs <- lm(vs ~ factor(cyl), mtcars)
+lm_am <- lm(am ~ factor(cyl), mtcars)
+lm_gear <- lm(gear ~ factor(cyl), mtcars)
+lm_carb <- lm(carb ~ factor(cyl), mtcars)
+```
+
+or
+
+```{r fixed_errors}
+y_pars <- c("mpg", "disp", "hp", "drat",
+            "wt", "qsec", "vs", "am",
+            "gear", "carb")
+all_lm <- lapply(y_pars, cyl_model)
+```
+
+## Some R basics
+
+### Basics of functions in R
+
+```{webr-r}
+#| label: fxn_intro
+#| autorun: true
+subtract <- function(x, y = 1) {
+  z <- x - y
+  return(z)
+}
+subtract(1:3, 4:6)
+subtract(1:3)
+subtract(y = 1:3, x = 4:6)
+```
+
+### Flexibility of lists
+
+```{webr-r}
+#| label: lists_are_great
+#| autorun: true
+x <- numeric(2)
+x[[1]] <- matrix(0, 0, 0)
+```
+
+```{webr-r}
+#| label: lists_are_great2
+#| autorun: true
+x <- as.list(numeric(3))
+x[[1]] <- matrix(0, 0, 0)
+x[[2]] <- data.frame()
+x[[3]] <- runif(3)
+x
+```
+
+### The `apply` functions
+
+- Allows you to apply a function to multiple inputs.
+- `lapply` outputs a list, `sapply` coerces to an array.
+
+```{webr-r}
+#| label: lapply_ex
+#| autorun: true
+lapply(4:5, function(i) 1 + i)
+sapply(4:5, function(i) 1 + i)
+```
+
+### For loops
+
+- Especially useful when one iteration's result depends on the previous iteration.
+- Changes existing object(s).
+
+```{webr-r}
+#| label: for_loops2
+#| fig-width: 8
+#| fig-height: 4
+#| autorun: true
+set.seed(3)
+par(mar = c(4, 4, 1, 1))
+x <- numeric(100)
+x[1] <- 10
+for (t in 2:length(x)) {
+  x[t] <- x[t-1] + rnorm(1)
+}
+plot(x, type = "l", lwd = 2)
+```
+
+## General process to "functionalize" code
+
+1. Break problem into smaller sub-problems.
+2. For each sub-problem, write a function.
+3. For writing each function...
+  1. The main function code will include the commonalities between all situations.
+  2. Features that aren't common should be input to the function as arguments.
+
+## Example #1: Cleaning weird files
+
+Suppose we have a folder full of CSV files like this:
+
+```{r weirddata_data, echo = FALSE}
+files <- c("## Data provided by X
+
+Ozone,Solar.R,Wind,Temp,Month,Day
+41,190,7.4,67,5,1
+NA,NA,14.3,56,5,5
+--- instrument error
+28,NA,14.9,66,5,6
+23,299,8.6,65,5,7
+--- instrument error
+NA,194,8.6,69,5,10
+
+## Year observed: 1990",
+"## Data provided by Y
+
+Ozone,Solar.R,Wind,Temp,Month,Day
+7,NA,6.9,74,5,11
+--- instrument error
+11,290,9.2,66,5,13
+14,274,10.9,68,5,14
+18,65,13.2,58,5,15
+--- instrument error
+--- instrument error
+6,78,18.4,57,5,18
+30,322,11.5,68,5,19
+11,44,9.7,62,5,20
+
+## Year observed: 1991
+")
+cat(files[1])
+```
+
+#### Problems:
+
+1. Remove unnecessary lines from each file.
+2. Create a single data frame from multiple cleaned files.
+
+#### Input information:
+
+1. Vector of file names (`file_names`)
+
+```{r weirddata_info, eval=FALSE}
+file_names <- c("file1.csv", "file2.csv")
+```
+
+### Clean a single CSV file to a string
+
+```{r weirddata3, eval=FALSE}
+clean_str <- function(file_name) {
+  lines <- readLines(file_name)
+  lines <- lines[!grepl("^\\#\\#|^--", lines) &
+                   lines != ""]
+  cleaned_str <- paste(lines, collapse = "\n")
+  return(cleaned_str)
+}
+```
+
+### Clean multiple files then combine them into a single data frame:
+
+```{r weirddata4, eval=FALSE}
+clean_df <- function(file_names) {
+  cleaned_strs <- lapply(file_names, clean_str)
+  data_frames <- lapply(cleaned_strs, function(s) read.csv(text = s))
+  combined_df <- do.call(rbind, data_frames)
+  return(combined_df)
+}
+head(clean_df(file_names))
+```
+```{r weirddata5, eval=TRUE, echo=FALSE}
+df_list <- lapply(strsplit(files, "\n"),
+       function(lines) {
+         lines <- lines[!grepl("^\\#\\#|^--", lines) &
+                 lines != ""]
+         cleaned_str <- paste(lines, collapse = "\n")
+         read.csv(text = cleaned_str)
+       })
+head(do.call(rbind, df_list))
+```
+
+## Example #2: Fitting lots of models
+
+How can we simplify this?
+
+```{r lotsa_models_bad, eval = FALSE}
+lm(mpg ~ cyl + disp + hp + drat, mtcars)
+lm(mpg ~ cyl + disp + hp + wt, mtcars)
+lm(mpg ~ cyl + disp + drat + wt, mtcars)
+lm(mpg ~ cyl + hp + drat + wt, mtcars)
+lm(mpg ~ disp + hp + drat + wt, mtcars)
+lm(disp ~ mpg + cyl + hp + drat, mtcars)
+lm(disp ~ mpg + cyl + hp + wt, mtcars)
+lm(disp ~ mpg + cyl + drat + wt, mtcars)
+lm(disp ~ mpg + hp + drat + wt, mtcars)
+lm(disp ~ cyl + hp + drat + wt, mtcars)
+lm(hp ~ mpg + cyl + disp + drat, mtcars)
+lm(hp ~ mpg + cyl + disp + wt, mtcars)
+lm(hp ~ mpg + cyl + drat + wt, mtcars)
+lm(hp ~ mpg + disp + drat + wt, mtcars)
+lm(hp ~ cyl + disp + drat + wt, mtcars)
+```
+
+#### Problems:
+
+1. Create all necessary formulas for each of the multiple Ys.
+2. Fit `lm` based on each of the created formulas.
+
+#### Input information:
+
+1. Vector of Y variables (`Ys`)
+2. Vector of possible X variables (`Xs`)
+3. Number of X variables to include in each model (`n_Xs`)
+
+```{webr-r}
+#| label: lotsa_models_info
+#| autorun: true
+Ys <- c("mpg", "disp", "hp")
+Xs <- c("mpg", "cyl", "disp", "hp", "drat", "wt")
+n_Xs <- 4
+```
+
+### Make vector of all necessary formulas:
+
+```{webr-r}
+#| label: lotsa_models
+#| autorun: true
+make_forms <- function(y, Xs, n_Xs) {
+  poss_Xs <- Xs[Xs != y]
+  n_poss_Xs <- length(poss_Xs)
+  # All possible combinations:
+  combs <- combn(n_poss_Xs, n_Xs, simplify = FALSE)
+  # Change to names:
+  names_ <- lapply(combs, function(x) poss_Xs[x])
+  # Combine each set to single RHS of formula:
+  rhs <- sapply(names_, paste, collapse = " + ")
+  # Whole formulas as strings:
+  form_strings <- paste(y, "~", rhs)
+  # Convert to formulas:
+  forms <- sapply(form_strings, as.formula,
+                  USE.NAMES = FALSE)
+  return(forms)
+}
+```
+
+### Fit `lm()` based on a single formula:
+
+```{webr-r}
+#| label: lotsa_models2
+#| autorun: true
+single_mod <- function(form) {
+  # Fit lm:
+  mod <- lm(form, mtcars)
+  # Make model print prettier:
+  mod$call$formula <- as.formula(mod$terms)
+  return(mod)
+}
+```
+
+### Put both steps together:
+
+```{webr-r}
+#| label: lotsa_models3
+#| autorun: true
+fit_models <- function(Ys, Xs, n_Xs) {
+  forms <- lapply(Ys, make_forms,
+                  Xs = Xs, n_Xs = n_Xs)
+  forms <- c(forms, recursive = TRUE)
+  lms <- lapply(forms, single_mod)
+  return(lms)
+}
+model_fits <- fit_models(Ys, Xs, n_Xs)
+model_fits[[1]]
+```
+
+## More information
+
+- T Mailund (2017). *Functional Programming in R*. [doi: 10.1007/978-1-4842-2746-6](
+  https://link.springer.com/book/10.1007%2F978-1-4842-2746-6)
+  - Free through UW
+- [Functional Programming in R with purrr (towardsdatascience.com)](
+https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229)
+- [Functional Programming (in Advanced R)](
+  http://adv-r.had.co.nz/Functional-programming.html)
