@@ -1,7 +1,8 @@
 # nell_website_quarto
 
-Quarto rebuild of lucasnell.com. Runs in parallel with the existing Hugo site
-until you're ready to cut over -- nothing here touches `nell_website`.
+Quarto rebuild of lucasnell.com -- **this is the live site** as of
+2026-09-14. Replaces the old Hugo site (`nell_website`), which is kept
+read-only as a fallback at https://nell-website.netlify.app.
 
 ## Setup
 

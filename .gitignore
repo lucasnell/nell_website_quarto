@@ -8,3 +8,6 @@
 # build without R installed. Commit it.
 
 **/*.quarto_ipynb
+
+# Local Netlify folder
+.netlify
