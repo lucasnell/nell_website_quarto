@@ -18,8 +18,8 @@ genomics) with mathematical models based on specific biology, primarily in
 insect systems. Because my empirical work often requires complex data
 analysis, I also [develop software](resources.qmd) where the need arises.
 
-I am currently a Postdoctoral Fellow in the
+I am currently a Postdoctoral Associate in the
 [Department of Ecology & Evolutionary Biology](https://ecologyandevolution.cornell.edu)
 at Cornell University, where I work with
-[Megan Greischar](https://ecologyandevolution.cornell.edu/megan-greischar).
+[Dr. Megan Greischar](https://ecologyandevolution.cornell.edu/megan-greischar).
 :::
