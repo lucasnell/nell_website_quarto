@@ -7,12 +7,18 @@
 # installs the pinned version and runs the render itself; don't also set
 # `[build] command = "quarto render"`, or it'll run before the plugin has
 # installed quarto (or double-render).
+#
+# Must include the "v" prefix (e.g. "v1.10.18", not "1.10.18") -- the
+# plugin passes this value straight through as a literal GitHub release
+# tag (quarto-dev/quarto-cli's `getReleaseByTag`), and quarto-cli's actual
+# tags are "v"-prefixed. Without it, the plugin 404s in onPreBuild
+# ("HttpError: Not Found") before quarto is even installed.
 
 [build]
   publish = "_site"
 
 [build.environment]
-  QUARTO_VERSION = "1.10.18"
+  QUARTO_VERSION = "v1.10.18"
 
 [[plugins]]
   package = "@quarto/netlify-plugin-quarto"
