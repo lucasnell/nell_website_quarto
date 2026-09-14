@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "No app code here -- this only exists so Netlify's build can install the Quarto build plugin declared in netlify.toml.",
+  "devDependencies": {
+    "@quarto/netlify-plugin-quarto": "^0.0.5"
+  }
+}
