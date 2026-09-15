@@ -46,13 +46,12 @@ webhook, not Netlify's usual "Link repository" dashboard flow — see
   confident type (Inter), generous whitespace, one accent color used in
   exactly one place per page.
 
-## Full context (not in this repo)
+## Full context
 
 Detailed architecture notes, every build/deploy gotcha hit along the way,
 design rationale, and open content decisions all live in `CLAUDE.md` and
-`docs/` — kept deliberately **outside** this repo, at
-`~/Library/CloudStorage/Box-Box/claude/website` on the machine this was
-built on. That's the file to read for anything not covered here.
+`docs/`, right here in the repo. That's the file to read for anything not
+covered here.
 
 ## Known open items
 

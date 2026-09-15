@@ -86,6 +86,5 @@ seven years newer.
 ## Still to do
 
 Full project context (architecture, gotchas, decisions, audit of the old
-site, visual direction) lives in `CLAUDE.md` and `docs/`, kept outside this
-repo in `~/Library/CloudStorage/Box-Box/claude/website` -- that's the
-up-to-date source for what's left, not this section.
+site, visual direction) lives in `CLAUDE.md` and `docs/`, right here in the
+repo -- that's the up-to-date source for what's left, not this section.
