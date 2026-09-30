@@ -12,14 +12,17 @@ Ecological and evolutionary processes, from genes to communities
 ![](img/portrait.jpg){fig-alt="Portrait of Lucas A. Nell" width="280"}
 
 I am a biologist that studies how interacting ecological and evolutionary
-dynamics can transform patterns of biodiversity, from genes to communities.
+processes can transform patterns of biodiversity.
 My approach combines data-intensive empirical methods (e.g., experiments,
-genomics) with mathematical models based on specific biology, primarily in
+genomics) with mathematical and statistical models, primarily in
 insect systems. Because my empirical work often requires complex data
 analysis, I also [develop software](resources.qmd) where the need arises.
+
 
 I am currently a Postdoctoral Associate in the
 [Department of Ecology & Evolutionary Biology](https://ecologyandevolution.cornell.edu)
 at Cornell University, where I work with
 [Dr. Megan Greischar](https://ecologyandevolution.cornell.edu/megan-greischar).
 :::
+
+

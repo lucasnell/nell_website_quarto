@@ -3,6 +3,8 @@ project:
   output-dir: _site
   render:
     - "**/*.qmd"
+  resources:
+    - "*.pdf"
 
 # Cached chunk output is committed to _freeze/, so Netlify needs only the
 # Quarto CLI to build -- no R, no package library, no dependency drift.
@@ -30,7 +32,6 @@ website:
         aria-label: GitHub
   page-footer:
     left: "© Lucas A. Nell"
-    right: "Built with [Quarto](https://quarto.org)"
 
 format:
   html:

@@ -3,6 +3,26 @@ title: "Research"
 toc: true
 ---
 
+
+
+I'm most interested in how organisms interact, disperse, and evolve, and how
+these linked processes generate patterns of biodiversity.
+Questions that are especially fascinating to me:
+
+* How do ecological outcomes change once we account for trait evolution?
+* When do large-scale patterns emerge from connected processes operating at
+  small spatial scales?
+* How do species interactions and population processes shape molecular evolution?
+
+To address these questions, I combine mathematical and statistical modeling, 
+experiments, and genomics.
+Using a broad arrange of approaches also allows me to understand how ecology
+and evolution operate across scales, from molecules to metacommunities.
+
+
+
+
+
 ## What maintains feedbacks between ecology and evolution?
 
 ![(a) Model simulations and (b) representative experimental results show that
@@ -22,10 +42,12 @@ coexistence and balancing selection. These two forms of dispersal together
 resulted in stable, persistent eco-evo dynamics
 [(Nell et al., *Science*)](https://www.science.org/stoken/author-tokens/ST-1758/full).
 
+
+
 ## How does population ecology shape genome evolution?
 
 ![Population dynamics of *Tanytarsus gracilentus* at Lake
-Mývatn, Iceland](img/midge_pop.svg)
+Mývatn, Iceland, showing fluctuations of nearly five orders of magnitude. My research is figuring out how these extreme population dynamics affect genome evolution in *T.&nbsp;gracilentus*.](img/midge_pop.svg)
 
 I am leveraging the extreme biology of chironomid midges (family
 Chironomidae, order Diptera) to understand how population ecology shapes
@@ -55,6 +77,55 @@ starvation. Further analyses will provide greater insights into how the
 complex population dynamics present in many real populations shapes
 genome-wide patterns of genetic diversity.
 
+
+
+## When do natural enemies change the impact of plant microbiota on insect-borne virus transmission?
+
+![Virus-spreading aphids are both repelled and killed by epiphytic
+*Pseudomonas* bacteria. Counterintuitively, our results show that sometimes these effects of *Pseudomonas* on aphids can actually increase aphid-borne virus transmission in plants.](img/CIHMID-diagram-simple.webp)
+
+
+Individual hosts can be protected from disease vectors through 
+their microbiota, but how those benefits scale up to the host 
+population level is rarely obvious. 
+Disease spread may be inhibited through reduced vector visitation
+or amplified as vectors redirect their attention to unprotected hosts.
+The outcome---suppression or escalation of disease outbreaks---is 
+likely to be influenced by natural enemies that redistribute or suppress
+vector populations.
+The challenge of determining how these processes interact across 
+scales is exemplified by pea aphids, major virus vectors in pea crops 
+that are commonly managed using parasitoid wasps.
+Recent evidence suggests that epiphytic bacteria in the genus 
+*Pseudomonas* can repel or kill pea aphids, 
+yet whether *Pseudomonas*-mediated protection from aphids 
+complements or undermines parasitoid-based vector control remains 
+unknown.
+We developed a multi-scale mathematical model to investigate why
+*Pseudomonas* complements versus undermines biocontrol of 
+aphid-vectored virus outbreaks.
+Because *Pseudomonas*-induced mortality leaves aphids patchily 
+distributed, the effect of *Pseudomonas* on virus outbreaks depends
+most strongly on how well parasitoids track aphid densities.
+When parasitoids efficiently locate aphids,
+*Pseudomonas* inhibits virus outbreaks by reducing aphid densities.
+However, when parasitoids are less efficient, they often search 
+unproductively for aphids on *Pseudomonas*-inhabited plants 
+with few aphids, slowing parasitoid population growth.
+Reduced parasitism intensifies aphid crowding on *Pseudomonas*-free 
+plants and boosts the production of winged aphids that accelerate viral
+spread.
+Counterintuitively, the more effective *Pseudomonas* is at killing 
+aphids, the more strongly it generates spatial variability and promotes 
+virus spread.
+Our results show how community context dictates whether individual 
+microbiota protection slows or accelerates viral outbreaks at the 
+population scale.
+(Nell et al. in review;
+[preprint](https://doi.org/10.64898/2026.05.11.724421)).
+
+
+
 ## How can feedbacks between dispersal and community composition affect regional coexistence?
 
 ![Main elements of mathematical model](img/nectar-model-diagram-simple.webp)
@@ -77,31 +148,9 @@ dispersal and community composition across scales in shaping patterns of
 species coexistence (Nell et al. in prep.;
 [preprint](https://doi.org/10.1101/2025.03.31.646410)).
 
-## When do spatial dynamics change outcomes of species interactions?
 
-![Virus-spreading aphids are both repelled and killed by epiphytic
-*Pseudomonas* bacteria](img/CIHMID-diagram-simple.webp)
 
-The effects of species interactions on communities often change with
-conditions in ways that remain unclear. Common plant epiphytic bacteria in
-the genus *Pseudomonas* can kill and repel pea aphids that transmit costly
-viruses among pea plants, which could provide local benefits to peas.
-However, repelling of aphids could lead to greater crowding and
-disproportionately more production of winged aphids on low-*Pseudomonas*
-plants. An increase in winged aphids should increase aphid-mediated virus
-transmission, resulting in negative effects on pea plants at larger spatial
-scales. Further complicating these interactions, plant viruses can often
-attract insect vectors, and by reducing aphid densities, aphid predators and
-parasitoids may modify how this symbiosis affects pea plants by reducing
-aphid crowding. We used mathematical modeling to understand when the
-*Pseudomonas*--pea symbiosis is a net benefit versus cost for pea plants. Our
-results indicate that by killing aphids, *Pseudomonas* is usually beneficial
-to pea plants. However, when natural enemies (parasitoid wasps) suppress
-aphid abundances, they can make the pseudo-crowding effect more pronounced
-and cause *Pseudomonas* presence to have a net negative effect on pea plants.
-Our results provide a rare case study of how spatial scale and community
-interactions can together dictate the nature of multipartite and multitrophic
-interactions.
+
 
 ## Can trait coevolution among competitors promote coexistence?
 
@@ -123,3 +172,5 @@ vulnerable to exclusion by a new invader. This may make communities
 containing multiple species with exclusion-promoting traits transitory
 (Nell et al. in revision;
 [preprint](https://doi.org/10.1101/2022.11.01.514799)).
+
+
