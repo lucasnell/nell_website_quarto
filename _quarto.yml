@@ -14,6 +14,7 @@ execute:
 website:
   title: "Lucas A. Nell"
   site-url: https://www.lucasnell.com
+  google-analytics: "G-LHBZJSJZ5Z"
   description: "Ecology and evolutionary biology: eco-evolutionary dynamics, genome evolution, and computational tools."
   favicon: img/favicon.png
   navbar:
